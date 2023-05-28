@@ -20,48 +20,36 @@ const getMyTodos = asyncHandler(async (req, res) => {
 // @route POST/api/createTodo
 // @access Private
 
-const createATodo = (req, res) => {
-  try {
-    console.log(req.body);
-    if (req.body) {
-      res.status(201).json({
-        status: 200,
-        data: [{}],
-        message: "New to-do added. List of all user to-do's returned",
-      });
-    } else {
-      res.json({
-        error: "The request doesn't contain a body",
-      });
-    }
-  } catch (error) {
-    console.log(error);
+const createATodo = asyncHandler(async (req, res) => {
+  if (req.body) {
+    res.status(201).json({
+      status: 200,
+      data: [{}],
+      message: "New to-do added. List of all user to-do's returned",
+    });
+  } else {
+    res.json({
+      error: "The request doesn't contain a body",
+    });
   }
-};
+});
 // @desc edit user todo
 // @route PUT/api/updateMyTodo/:id
 // @access Private
-const updateMyTodo = () => {
-  try {
-    res.status(200).json({
-      message: `Update goal ${req.params.id}`,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+const updateMyTodo = asyncHandler(async (req, res) => {
+  res.status(200).json({
+    message: `Update goal ${req.params.id}`,
+  });
+});
 // @desc Delete user todos
 // @route DELETE/api/deleteMyTodos/:id
 // @access Private
-const deleteATodo = () => {
-  try {
-    res.status(200).json({
-      message: `Delete goal ${req.params.id}`,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+const deleteATodo = asyncHandler(async (req, res) => {
+  res.status(200).json({
+    message: `Delete goal ${req.params.id}`,
+  });
+});
+
 module.exports = {
   getMyTodos,
   createATodo,
