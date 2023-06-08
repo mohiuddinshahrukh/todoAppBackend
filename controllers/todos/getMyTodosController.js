@@ -1,8 +1,7 @@
-const asyncErrorHandler = require("express-async-handler");
 const Todo = require("../../models/todoModel");
 const getTodoFromDb = require("../../services/dbServices/getTodoFromDBService");
 
-const getMyTodosController = asyncErrorHandler(async (req, res) => {
+const getMyTodosController = async (req, res) => {
   try {
     const todos = await getTodoFromDb();
     res.status(200).json({ status: "Success", todos: todos });
@@ -13,6 +12,6 @@ const getMyTodosController = asyncErrorHandler(async (req, res) => {
       message: "Error getting todo's from the Database",
     });
   }
-});
+};
 
 module.exports = getMyTodosController;

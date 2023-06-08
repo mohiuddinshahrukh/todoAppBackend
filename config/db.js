@@ -6,7 +6,7 @@ const connectDB = async (uri) => {
     try {
       const conn = await mongoose.connect(uri);
       console.log(`MongoDB Connected ${conn.connection.host}`.cyan.underline);
-      break;
+      return conn;
     } catch (error) {
       console.log(error);
       conAttemps--;

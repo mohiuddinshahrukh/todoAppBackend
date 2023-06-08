@@ -5,10 +5,8 @@ const bodyParser = require("body-parser");
 const colors = require("colors");
 
 const connectDB = require("../config/db");
-const port = process.env.BACKEND_PORT || 5001;
-
-connectDB(process.env.MONGO_URI);
-
+const port = process.env.BACKEND_PORT;
+const connectionObject = connectDB(process.env.MONGO_URI);
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
