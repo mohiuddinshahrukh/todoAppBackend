@@ -2,7 +2,6 @@ const asyncErrorHandler = require("express-async-handler");
 const Todo = require("../../models/todoModel");
 const createTodoInDb = require("../../services/dbServices/createTodoInDBService");
 const { connected } = require("../../config/db");
-
 const createATodoController = asyncErrorHandler(async (req, res) => {
   try {
     if (!req.body) {
